@@ -3,42 +3,69 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Bootstuser homeee</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link th:href="@{/css/mystyles.css}" rel="stylesheet"/>
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="#">The Budget App</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user/signupForm">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user/loginForm">Login </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <main class ="container"></main>
 <section class="row m-1"></section>
 
 <main class="container">
-    <section class="row m-1">
-        <article class="col">
-            <p class ="text-center" th:text="${info}"></p>
-        </article>
-    </section>
-</main>
+
+
 
 <p th:text="'Welcome ' + ${myUser.firstName} + ' ' + ${myUser.lastName}"/>
 
-<p>
-    <a href="/budget/addBudgetForm"> Add Budget </a>
-</p>
+<div>
 
+    <a href="/budget/addBudgetForm"> <button type="button" class="btn btn-secondary btn-lg">Add Budget</button> </a>
 
-<p>
-    <a href="/budget/viewBudgets"> View Budgets </a>
-</p>
+    <br/> <br/>
 
-<p>
-    <a href="/transaction/addTransactionForm"> Add Transaction </a>
-</p>
+    <a href="/budget/viewBudgets"> <button type="button" class="btn btn-secondary btn-lg">View Budgets </button> </a>
 
-<p>
-    <a href="/transaction/viewTransactions"> View Transactions </a>
-</p>
+    <br/> <br/>
 
+    <a href="/transaction/addTransactionForm"> <button type="button" class="btn btn-secondary btn-lg">Add Transaction </button> </a>
+
+    <br/> <br/>
+
+    <a href="/transaction/viewTransactions"> <button type="button" class="btn btn-secondary btn-lg">View Transactions </button> </a>
+
+    <br/> <br/>
+</div>
+</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script th:src="@{/script.js}"> </script>
 </body>

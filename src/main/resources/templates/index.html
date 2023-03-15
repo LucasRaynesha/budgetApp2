@@ -3,51 +3,178 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+
+    <title>The Budget App </title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
           crossorigin="anonymous"/>
-    <link th:href="@{/css/mystyles.css}" rel="stylesheet"/>
+
+    <link th:href="@{the_budget_app.css}" rel="stylesheet"/>
+
+    <style>
+        body {
+            background-color: yellow;
+
+        }
+
+        // 90 = 360/no of layers (4 in my case)
+        $hueStep: 90;
+        $delayStep: .115s;
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            place-content: center;
+        }
+
+        .btn {
+            background: hsl(var(--hue), 98%, 80%);
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            color: black;
+            font: 600 1.05rem/1 "Nunito", sans-serif;
+            letter-spacing: .05em;
+            overflow: hidden;
+            padding: 1.15em 3.5em;
+            min-height: 3.3em;
+            position: relative;
+            text-transform: lowercase;
+
+        &--yellow {
+             --hue: 46;
+         }
+
+        &--green {
+             --hue: 163;
+         }
+
+        &--purple {
+             --hue: 244;
+         }
+
+        &--red {
+             --hue: 0;
+         }
+
+        &--blue {
+             --hue: 210;
+         }
+
+        &:active,
+        &:focus {
+             outline: 3px solid hsl(calc(var(--hue) + #{$hueStep}), 98%, 80%);
+         }
+
+        & + & {
+              margin-top: 2.5em;
+          }
+
+        &__txt {
+             position: relative;
+             z-index: 2;
+         }
+
+        &__bg {
+             background: hsl(var(--hueBg), 98%, 80%);
+             border-radius: 50%;
+             display: block;
+             height: 0;
+             left: 50%;
+             margin: -50% 0 0 -50%;
+             padding-top: 100%;
+             position: absolute;
+             top: 50%;
+             width: 100%;
+             transform: scale(0);
+             transform-origin: 50% 50%;
+             transition: transform 0.175s cubic-bezier(0.5, 1, 0.89, 1);
+             z-index: 1;
+
+        @for $i from 1 through 4 {
+        &:nth-of-type(#{$i}) {
+            --hueBg: calc(var(--hue) - #{$i * $hueStep});
+            transition-delay: $delayStep / 2 * (4 - $i);
+        }
+        }
+
+        .btn:hover &,
+        .btn:focus &,
+        .btn:active & {
+            transform: scale(1.5);
+            transition: transform 0.35s cubic-bezier(0.11, 0, 0.5, 0);
+
+        @for $i from 1 through 4 {
+        &:nth-of-type(#{$i}) {
+            transition-delay: $delayStep * $i;
+        }
+        }
+        }
+        }
+        }
+        </style>
+
 </head>
+
 <body>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+
+
+
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+
+        <a class="navbar-brand" href="#">The Budget App</a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="user/signupForm">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="user/loginForm">Login </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
+
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container">
-    <section class="row m-1">
-        <article class="col">
-            <p class ="text-center" th:text="${info}"></p>
-        </article>
-    </section>
-</div>
 
 <p>
-    <a href="/user/signupForm"> Signup </a>
+
+    Welcome to the Budget App.
+    On the budget app, you can ...
 </p>
+
+
 <p>
-    <a href="/user/loginForm"> Login </a>
+
+
+
+    <a class="customButton" href="/user/signupForm">
+        <button type="button" class="btn btn-primary btn-lg">
+            User Sign Up
+        </button>
+    </a>
+
+    <a class="customButton" href="/user/loginForm">
+        <button type="button" class="btn btn-secondary btn-lg">
+            User Log In
+        </button>
+    </a>
 </p>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
