@@ -14,7 +14,9 @@
 
     <style>
         body {
-            background-color: yellow;
+            background-color: darkgrey;
+            font-size: larger;
+            font-family: "Sama Kannada"
 
         }
 
@@ -29,6 +31,7 @@
         body {
             display: grid;
             place-content: center;
+            flex: border-box;
         }
 
         .btn {
@@ -124,9 +127,6 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 
-
-
-
     <div class="container-fluid">
 
         <a class="navbar-brand" href="#">The Budget App</a>
@@ -137,9 +137,9 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link active" aria-current="page" href="#">Home</a>-->
+<!--                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="user/signupForm">Sign Up</a>
                 </li>
@@ -152,17 +152,20 @@
     </div>
 </nav>
 
+<break>
 
-<p>
+<div class="container">
+<h3>
 
-    Welcome to the Budget App.
-    On the budget app, you can ...
-</p>
+    Welcome to the Budget Tracker.
 
+</h3>
 
-<p>
+<span>Make managing your expenses easier with the budget Application. You can keep the records of all your spending all in one location.</span>
 
+</div>
 
+<section>
 
     <a class="customButton" href="/user/signupForm">
         <button type="button" class="btn btn-primary btn-lg">
@@ -175,7 +178,8 @@
             User Log In
         </button>
     </a>
-</p>
+</section>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script th:src="@{/script.js}"> </script>
