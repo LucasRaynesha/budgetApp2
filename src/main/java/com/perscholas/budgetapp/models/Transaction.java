@@ -1,90 +1,78 @@
 package com.perscholas.budgetapp.models;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.math.BigDecimal;
+
+
+import java.util.Date;
+import java.util.Objects;
+
 
 @Entity
+@Data
+@Slf4j
+@ToString
+@NoArgsConstructor
+@RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name="transaction")
+@Table(name = "transaction")
 public class Transaction {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    @Column(name="Name")
+
+    @NonNull
+    @Column(name = "Name")
     String name;
-    @Column(name="Total")
-    BigDecimal total;
-    @Column(name ="Date")
-    String Date;
-    @Column(name="Type")
+
+    @NonNull
+    @Column(name = "Total")
+    Double amount;
+
+    @NonNull
+    @Column(name = "Date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    Date date;
+
+    @NonNull
+    @Column(name = "Description")
+    String description;
+
+    @NonNull
+    @Column(name = "type")
     String type;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    Category category;
+    @NonNull
+    @Column(name = "my_user_id")
+    Integer userId;
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Transaction(Integer id, String name, BigDecimal total, String date, String type) {
-        this.id = id;
+    public Transaction(@NonNull String name, @NonNull Double amount, @NonNull Date date, @NonNull String description, @NonNull String type) {
         this.name = name;
-        this.total = total;
-        Date = date;
+        this.amount = amount;
+        this.date = date;
+        this.description = description;
         this.type = type;
     }
 
-    public Transaction() {
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return Objects.equals(id, that.id) && name.equals(that.name)
+                && description.equals(that.description) && date.equals(that.date)
+                && amount.equals(that.amount) && type.equals(that.type)
+                && userId.equals(that.userId);
     }
 
-    public Integer getId() {
-        return id;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, amount, type, date, userId);
     }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getTotal() {
-        return total;
-    }
-
-    public void setTotal(BigDecimal total) {
-        this.total = total;
-    }
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        Date = date;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-
 }
+

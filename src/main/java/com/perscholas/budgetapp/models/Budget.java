@@ -1,43 +1,58 @@
 package com.perscholas.budgetapp.models;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 
+import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
-import java.util.TreeSet;
+
 
 @Entity
+@Data
+@Slf4j
+@ToString
+@NoArgsConstructor @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name="budget")
 public class Budget {
 
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+
+    @NonNull
     @Column(name="Name")
     String name;
-    @ManyToOne
-    @JoinColumn(name = "User Id")
-    MyUser user;
 
-    Set<Group> group = new TreeSet<>();
+    @NonNull
+    @Column(name="Amount")
+    Double amount;
 
-    public MyUser getUser() {
-        return user;
-    }
+    @NonNull
+    @Column(name="my_user_id")
+    Integer userId;
 
-    public void setUser(MyUser user) {
-        this.user = user;
-    }
-
-
-    public Budget(Integer id, String name, MyUser user) {
-        this.id = id;
+    public Budget(@NonNull String name) {
         this.name = name;
-        this.user = user;
     }
 
-    public Budget() {
+    public void addTransaction(Transaction trans){
+
+    }
+
+    public void removeTransaction(Transaction trans){
+
+        log.debug("remove the transaction");
+    }
+
+    private void addUser(MyUser myUser) {
+
+    }
+
+    private void removeUser(MyUser myUser) {
 
     }
 
@@ -49,6 +64,14 @@ public class Budget {
         this.id = id;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public String getName() {
         return name;
     }
@@ -57,14 +80,36 @@ public class Budget {
         this.name = name;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "budget")
-    public Set<Group> getGroup() {
-        return group;
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setGroup(Set<Group> group) {
-        this.group = group;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Budget budget = (Budget) o;
+        return Objects.equals(id, budget.id) && name.equals(budget.name)
+                && userId.equals(budget.userId) && amount.equals(budget.amount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, userId, amount);
+    }
+
+    @Override
+    public String toString() {
+        return "Budget{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", amount=" + amount +
+                ", userId=" + userId +
+                '}';
+    }
 }

@@ -4,15 +4,21 @@ import com.perscholas.budgetapp.models.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
+
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
     Optional<Transaction> findByName (String name);
-    Optional<Transaction> findByTotal (BigDecimal total);
+    List<Transaction> findByUserId (Integer userId);
 
-    Optional<Transaction> findByDate (String Date);
+    Optional<Transaction> findById (Integer id);
+    Optional<Transaction> findByAmount (Double amount);
+
+    Optional<Transaction> findByDate (Date date);
 
     Optional<Transaction> findByType (String type);
+    Optional<Transaction> findByDescription (String description);
 }

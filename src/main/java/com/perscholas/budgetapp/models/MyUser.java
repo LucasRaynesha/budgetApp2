@@ -1,46 +1,89 @@
 package com.perscholas.budgetapp.models;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 
+import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
-import java.util.TreeSet;
+
 
 @Entity
+@ToString
+@NoArgsConstructor
+@Getter
+@Setter
+@Slf4j
+@RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name="user")
-public
-class MyUser {
+@Table(name = "user")
+public class MyUser {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    @Column(name = "User")
-    String userName;
-
+    @NonNull
+    @Column(name = "FirstName")
+    String firstName;
+    @NonNull
+    @Column(name = "LastName")
+    String lastName;
+    @NonNull
+    @Column(name = "email")
+    String email;
+    @NonNull
+    @Column(name = "password")
     String password;
 
 
-
-    @OneToMany
-    Set<Budget> budget = new TreeSet<>();
-
-
-    public MyUser(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
+    private void addUser(MyUser myUser) {
+        myUser.add(myUser);
     }
 
-    public MyUser() {
+    private void add(MyUser myUser) {
+    }
+
+    private void removeUser(MyUser myUser) {
+        myUser.remove(myUser);
 
     }
 
-    public String getUserName() {
-        return userName;
+    private void remove(MyUser myUser) {
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -51,14 +94,17 @@ class MyUser {
         this.password = password;
     }
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY , mappedBy = "user")
-    public Set<Budget> getBudget() {
-        return budget;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyUser myUser = (MyUser) o;
+        return Objects.equals(firstName, myUser.firstName) && Objects.equals(lastName, myUser.lastName) && email.equals(myUser.email) && Objects.equals(password, myUser.password);
     }
 
-    public void setBudget(Set<Budget> budget) {
-        this.budget = budget;
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, email, password);
     }
-
 
 }
