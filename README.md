@@ -15,10 +15,9 @@ Technologies
 * Spring MVC
 * Thymeleaf
 * Bootstrap
-* Java Corretto 17
+* Corretto 17
 * MySQL
-* Maven
-* Spring Security 
+* Maven 
 * Java 17
 
 
