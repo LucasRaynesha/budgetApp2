@@ -1,7 +1,7 @@
-package com.perscholas.budgetapp.controller;
+package com.rayneshalucas.budgetapp.controller;
 
-import com.perscholas.budgetapp.models.MyUser;
-import com.perscholas.budgetapp.service.MyUserService;
+import com.rayneshalucas.budgetapp.models.MyUser;
+import com.rayneshalucas.budgetapp.service.MyUserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

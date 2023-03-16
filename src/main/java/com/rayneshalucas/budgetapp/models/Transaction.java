@@ -1,4 +1,4 @@
-package com.perscholas.budgetapp.models;
+package com.rayneshalucas.budgetapp.models;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,4 +1,4 @@
-package com.perscholas.budgetapp;
+package com.rayneshalucas.budgetapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

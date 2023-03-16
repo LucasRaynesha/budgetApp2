@@ -1,7 +1,7 @@
-package com.perscholas.budgetapp.service;
+package com.rayneshalucas.budgetapp.service;
 
-import com.perscholas.budgetapp.dao.TransactionRepository;
-import com.perscholas.budgetapp.models.Transaction;
+import com.rayneshalucas.budgetapp.dao.TransactionRepository;
+import com.rayneshalucas.budgetapp.models.Transaction;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-package com.perscholas.budgetapp.dao;
+package com.rayneshalucas.budgetapp.dao;
 
-import com.perscholas.budgetapp.models.Transaction;
+import com.rayneshalucas.budgetapp.models.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

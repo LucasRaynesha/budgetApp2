@@ -1,11 +1,10 @@
-package com.perscholas.budgetapp.service;
+package com.rayneshalucas.budgetapp.service;
 
-import com.perscholas.budgetapp.dao.*;
-import com.perscholas.budgetapp.models.Budget;
-import com.perscholas.budgetapp.models.MyUser;
-import com.perscholas.budgetapp.models.Transaction;
+import com.rayneshalucas.budgetapp.dao.*;
+import com.rayneshalucas.budgetapp.models.Budget;
+import com.rayneshalucas.budgetapp.models.MyUser;
+import com.rayneshalucas.budgetapp.models.Transaction;
 import jakarta.annotation.PostConstruct;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

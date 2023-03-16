@@ -1,4 +1,4 @@
-package com.perscholas.budgetapp;
+package com.rayneshalucas.budgetapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
